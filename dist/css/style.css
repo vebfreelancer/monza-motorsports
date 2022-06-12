@@ -1656,9 +1656,9 @@ Sniped (HTML): cnt
 }
 
 .cards-car__photo {
-  max-height: 200px;
+  max-height: 250px;
   width: 100%;
-  height: auto;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
