@@ -1,9 +1,11 @@
-// Import of functionality ==============================================================================================================================================================================================================================================================================================================================
+/* ######################################################## IMPORT OF FUNCIONALITY ######################################################## */
+
 // import { isMobile } from "./functions.js";
 import { _slideUp } from "./functions.js";
 import { _slideDown } from "./functions.js";
 import { _slideToggle } from "./functions.js";
 
+/* ######################################################## MENU SORT ######################################################## */
 const sortMenu = document.getElementById('sort');
 const iconSort = document.getElementById('icon-sort');
 const sortItems = document.querySelectorAll('.sort__item');
@@ -86,6 +88,7 @@ document.body.addEventListener('click', (event) => {
 	}
 });
 
+/* ######################################################## EMAIL FIELD ######################################################## */
 const subscriptWrapper = document.querySelector('.subscription__wrapper');
 const subscriptInput = document.querySelector('.subscription__input');
 
@@ -99,6 +102,7 @@ subscriptInput.addEventListener('blur', function(event){
     }, 0);
 });
 
+/* ######################################################## ACCORDION ######################################################## */
 const spollersItems = document.querySelectorAll('.spollers__item');
 
 for (let i = 0; i < spollersItems.length; i++){

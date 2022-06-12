@@ -602,17 +602,17 @@
         &._spoller-active {
             color: #DF4E3C;
             .spollers__icon {
-                #open {
+                .open-spoller-icon {
                     display: none;
                 }
-                #close {
+                .close-spoller-icon {
                     display: block;
                 }
             }
         }
     }
     &__icon {
-        #close {
+        .close-spoller-icon {
             display: none;
         }
     }

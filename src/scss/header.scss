@@ -1,9 +1,18 @@
 //====================================================================================================
 .header {
-	background: url(../img/main-bg.jpg) no-repeat center top / cover;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
 	padding: 19px 0px;
+	@media (min-width: $mobileSmall) {
+		background-image: url(../img/main-bg.jpg);
+	}
 	@media (max-width: $mobile) {
-		background: url(../img/main-bg.jpg) no-repeat right -150px top/cover;
+		background-position: right -150px top;
+	}
+	@media (max-width: $mobileSmall) {
+		background-image: url(../img/mob-2.jpg);
+		background-position: right top;
 	}
 	&__container {
 	}
