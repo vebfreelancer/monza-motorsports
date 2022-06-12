@@ -24,7 +24,7 @@ export function addTouchClass() {
 
 const link = document.createElement('link');
 link.rel = "stylesheet";
-link.href = "css/style.min.css";
+link.href = "css/bootstrap-grid.min.css";
 
 // Adding Loaded for HTML after full loading of the page
 export function addLoadedClass() {
