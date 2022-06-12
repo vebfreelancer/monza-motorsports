@@ -1,0 +1,149 @@
+@use "sass:math";
+
+// Connection of myxins ===========================================================================================================================================================================================================================================================================
+@import "base/mixins";
+
+// Connection of fonts ===========================================================================================================================================================================================================================================================================
+//&display=swap - Add when connected via plugin
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Inter:regular&display=swap);
+@import "base/fonts";
+
+// Connection of icon fonts ==============================================================================================================================================================================================================================================================================
+//@import "base/icons";
+
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+// Default font ==============================================================================================================================================================================================================================================================================
+$fontFamily: "NotoSans";
+$fontSize: rem(15); // where 14 (px) is the default font size from the layout
+
+// SETTINGS ===============================================================================================================================================================================================================================================================================================
+// The minimum page width
+$minWidth: 320;
+// The width of the canvas (layout)
+$maxWidth: 1440;
+// The width of the limiting container (0 = no restriction)
+$maxWidthContainer: 1240;
+// General indenter
+// (30 = 15px on the left and right, 0 = there is no retreat)
+$containerPadding: 30;
+
+// Adaptation type:
+// 1 = responsiveness (the container does not have breikpins),
+// 2 = according to Break-Pints (the container changes its width according to the Break-Pints)
+$responsiveType: 1;
+
+// The width of the first breikpointa
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Break-Pints
+$pc: em($containerWidth); // PC, laptops, some tablets in a horizontal position
+$tablet: em(991.98); // Tablets, some phones in a horizontal position
+$mobile: em(767.98); // Phones L
+$mobileSmall: em(479.98); // Phones S
+
+// The main color of the font
+$mainColor: #000;
+
+// Zeroing and general parameters ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+@import "base/null";
+
+body {
+	font-weight: 400;
+	color: $mainColor;
+	// Scroll is blocked
+	.lock & {
+		overflow: hidden;
+	}
+}
+
+// Shell ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+	min-height: 100%;
+	display: grid;
+	overflow: hidden;
+	grid-template-rows: auto 1fr auto;
+	// The site is loaded
+	.loaded & {
+	}
+}
+
+// Limiting container ===========================================================================================================
+
+/*
+(i) Styles will be applied to 
+all classes containing *__container
+For example header__container, main__container etc.
+Sniped (HTML): cnt
+*/
+@if ($responsiveType==1) {
+	// Responsive
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 rem(math.div($containerPadding, 2));
+		}
+	}
+} @else {
+	// According to Break-Pints
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+
+// Connecting basic styles, templates (blanks) and recalling classes
+// To connect/disconnect specific styles, see Base.sscss
+@import "base";
+
+// Connecting styles of individual blocks
+@import "header";
+@import "footer";
+
+// Connection of individual pages
+@import "home";
+
+// The main block of the page ====================================================================================================
+.page {
+	background: #F8F8F8;
+	min-width: 0;
+}
+
+.social-links {
+    &__item {
+    }
+    &__link {
+		svg path {
+			transition: fill .3s ease-in-out;
+		}
+		@media (min-width: $tablet) {
+			&:hover  svg path {
+				fill: #DF4E3C;
+			}
+		}
+    }
+}

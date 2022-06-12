@@ -1,0 +1,121 @@
+// General file of elements of shapes
+// To connect/disconnect the styles of a particular є male form, see Base/Forms/Forms.sscss
+// @import "Base/Forms/Forms";
+
+// Styles of spoilers
+// @import "Base/Spollers";
+
+// Styles of Tabs
+// @import "Base/Tabs";
+
+// Styles of cards
+// @Import "Base/Maps";
+
+// Styles for Full Clack Bloc
+[data-fullscreen] {
+	height: 100vh;
+	.touch & {
+		height: calc(var(--vh, 1vh) * 100);
+		@media (max-width: $mobile) {
+			transition: height 0.2s;
+		}
+	}
+}
+
+// Styles for responsive pictures (IBG)
+// snippet (html): IBG (DIV with a picture and classes)
+// snippet (html): ibga (a with picture and classes)
+[class*="__image-ibg"] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+
+// Templates (Zagotovka)
+// @EXTend% Name of the Template;
+// snippet (snss): ex
+
+// The list for the list
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+// Adaptive video
+%responsiveVideo {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	padding-bottom: 56.25%;
+	video,
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+// Video as a background
+%videoBackground {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background-size: cover;
+	}
+}
+// Gray filter
+%grayfilter {
+	transition: all 0.3s ease 0s;
+	filter: grayscale(1);
+	@media (any-hover: hover) {
+		&:hover {
+			filter: grayscale(0);
+		}
+	}
+}
+// Cancel the selection
+%noselect {
+	user-select: none;
+}
+// Mirror reflection
+%mirror {
+	transform: scale(-1, 1);
+}
+// Smooth scroll
+%smoothscroll {
+	-webkit-overflow-scrolling: touch;
+}
+// Hide scroll
+%hidescroll {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
