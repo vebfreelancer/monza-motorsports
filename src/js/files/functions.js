@@ -22,16 +22,11 @@ export function addTouchClass() {
 	if (isMobile.any()) document.documentElement.classList.add('touch');
 }
 
-const link = document.createElement('link');
-link.rel = "stylesheet";
-link.href = "css/bootstrap-grid.min.css";
-
 // Adding Loaded for HTML after full loading of the page
 export function addLoadedClass() {
 	window.addEventListener("load", function () {
 		setTimeout(function () {
 			document.documentElement.classList.add('loaded');
-			document.head.append(link);
 		}, 0);
 	});
 }
